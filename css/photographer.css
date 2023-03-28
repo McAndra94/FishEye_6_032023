@@ -24,7 +24,8 @@ body {
 
 #photographerName {
   color: #d3573c;
-  font-size: 45px;
+  font-size: 64px;
+  line-height: 83px;
 }
 
 #photographerLocation {
@@ -51,8 +52,7 @@ body {
   display: flex;
   height: 300px;
   width: 350px;
-  /*   align-content: center;
- */
+  /*   align-content: center; */
   display: flex;
   flex-direction: column;
   /*   justify-content: space-between; */
@@ -60,11 +60,16 @@ body {
   padding: 50px 0;
 }
 
+/* Enlarge to 110% on hover */
+.mediaBox:hover {
+  transform: scale(1.1);
+}
+
 .mediaSubBox {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #911c1c;
+  color: #901c1c;
 }
 
 .likeBox {
@@ -72,8 +77,8 @@ body {
 }
 
 .likeBox img {
-  height: 19px;
-  width: 18px;
+  height: 20px;
+  width: 18.35px;
   padding: 28px 0 0 10px;
 }
 
@@ -108,10 +113,21 @@ body {
   cursor: pointer;
 }
 
+/* Change color on hover & focus */
+.contact_button:hover,
+.contact_button:focus {
+  background-color: #d3573c;
+  color: black;
+}
+
+#contact_modal {
+  position: absolute;
+  top: 100px;
+}
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,4 +176,12 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+}
+
+/* Image modal */
+.close {
+  position: absolute;
+  color: #000000;
+  top: 20px;
+  right: 20px;
 }
