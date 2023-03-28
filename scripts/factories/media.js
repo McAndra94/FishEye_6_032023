@@ -22,7 +22,7 @@ function mediaFactory(artMediaData) {
     anchor.appendChild(imgElement);
     anchor.appendChild(titleElement);
     anchor.appendChild(likesElement);
-    // Attach anchor to article | each article directs to link
+    // Attach anchor to article | each article directs to lightbox
     article.appendChild(anchor);
 
     return article;
