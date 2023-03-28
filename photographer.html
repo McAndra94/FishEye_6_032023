@@ -41,7 +41,7 @@
           <option>Titre</option>
         </select>
       </section>
-      <div id="photographerMedia">
+      <div class="photographerMedia">
         <div class="mediaBox">
           <img class="mediaImg" />
           <div class="mediaSubBox">
@@ -61,6 +61,7 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form>
+          <!-- <h3 id="photographerName"></h3> -->
           <div>
             <label>Prénom</label>
             <input />
@@ -78,9 +79,13 @@
         </form>
       </div>
     </div>
+    <!-- <div id="image_modal">
+      <img class="imgModal" />
+      <span class="close">&times;</span>
+    </div> -->
     <script src="/scripts/pages/photographer.js"></script>
-    <!--     <script src="/scripts/pages/media.js"></script>
- -->
+    <script src="/scripts/pages/media.js"></script>
+    <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
