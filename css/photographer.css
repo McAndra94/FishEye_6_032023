@@ -41,65 +41,119 @@ body {
 #photographerImg {
   height: 200px;
   width: 200px;
+  min-width: 200px;
   border-radius: 50%;
   object-fit: cover;
   /* Added space between image & contact box */
   margin-left: 15%;
 }
 
-/* Media section */
-.mediaBox {
-  display: flex;
-  height: 300px;
-  width: 350px;
-  /*   align-content: center; */
-  display: flex;
-  flex-direction: column;
-  /*   justify-content: space-between; */
-  align-items: left;
-  padding: 50px 0;
+/* Sort section */
+select {
+  height: 50px;
+  width: 180px;
+  background-color: #911c1c;
+  color: #ffffff;
+  border-radius: 5px;
+  padding-left: 15px;
 }
 
-/* Enlarge to 110% on hover */
+select option:active {
+  height: auto;
+  width: 150px;
+  padding-top: 20px;
+  background-color: #911c1c;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  /* White line on dropdown menu */
+  border-top: 1px solid #ffffff;
+}
+
+select option:active {
+  color: #fff;
+  background-color: #911c1c;
+}
+
+/* Media section */
+.photographerMedia {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+  justify-content: space-around;
+}
+
+.mediaBox {
+  height: 350px;
+  width: 27%;
+  align-content: center;
+  /*   justify-content: space-between; 
+  align-items: left;
+  overflow: hidden;*/
+  padding: 50px 5px;
+  margin: 20px 20px 0 0;
+  text-align: justify;
+}
+
+/* Enlarge to 120% on hover */
 .mediaBox:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
+}
+
+.mediaBox a div {
+  display: flex;
+  flex-direction: row;
 }
 
 .mediaSubBox {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   color: #901c1c;
+  align-items: center;
+  padding-top: 10px;
 }
 
-.likeBox {
+/* .likeBox,
+.mediaBox {
   display: flex;
+  align-items: center;
 }
-
+*/
 .likeBox img {
   height: 20px;
   width: 18.35px;
-  padding: 28px 0 0 10px;
+  padding-left: 0px;
 }
 
-.mediaImg {
-  min-height: 300px;
-  min-width: 350px;
+.mediaElement {
+  height: 90%;
+  width: 100%;
+  min-height: 200px;
+  min-width: 250px;
+  /*   max-height: 250px;*/
+  max-width: 300px;
   background-color: #c4c4c4;
   border-radius: 5px;
 }
 
-#mediaTitle {
-  display: flex;
-  font-size: 26px;
+.mediaBox h2 {
+  font-size: 22px;
   line-height: 31px;
-  /* text-align: left; */
 }
-#mediaLikes {
+
+.mediaLikes {
   /* text-align: right; */
-  font-size: 24px;
+  font-size: 22px;
   line-height: 30px;
+  margin: 0;
+  padding: 20px 5px 0 5px;
 }
+
+.likeHeart {
+  height: 25px;
+  width: 25px;
+  padding: 20px 0 0 0;
+}
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;
