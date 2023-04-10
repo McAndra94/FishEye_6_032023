@@ -2,7 +2,7 @@
 const photographeId = new URLSearchParams(window.location.search).get("id");
 //
 window.onload = function () {
-  fetch("/data/photographers.json")
+  fetch("data/photographers.json")
     .then((response) => response.json())
     .then((data) => {
       // Photographers data
@@ -13,17 +13,22 @@ window.onload = function () {
         window.location.href = "index.html";
       }
       console.log(photographeId);
-      // Media data
-      const photographerMedia = [];
-      data.media.forEach((item) => {
-        if (item.photographerId == photographeId) photographerMedia.push(item);
-      });
-      console.log(photographerMedia.photographerId);
 
       displayPhotographer(photographer);
       console.log(photographer); // photographer info
 
+      // Media data
+      const photographerMedia = [];
+      data.media.forEach((item) => {
+        console.log("Check 1 2 3");
+
+        if (item.photographerId == photographeId) {
+          return photographerMedia.push(item);
+        }
+      });
+
       displayMedia(photographerMedia);
+      console.log(photographerMedia.length);
     });
 };
 
