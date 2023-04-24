@@ -8,6 +8,10 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/99fd67c0a9.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -34,25 +38,42 @@
         <img id="photographerImg" />
       </div>
       <section class="sortSection">
-        <label for="sort">Trier par </label>
-        <select>
-          <option>Popularité</option>
-          <option>Date</option>
-          <option>Titre</option>
-        </select>
-      </section>
-      <div class="photographerMedia">
-        <div class="mediaBox">
-          <img class="mediaImg" />
-          <div class="mediaSubBox">
-            <h2 id="mediaTitle"></h2>
-            <div class="likeBox">
-              <p id="mediaLikes"></p>
-              <img id="likeHeart" />
+        <label for="form1">Trier par </label>
+        <form name="form1" novalidate method="post">
+          <div class="selectContainer">
+            <button
+              type="button"
+              class="s1 s1-closed"
+              onclick="toggleOptionsList(this)"
+            >
+              <span>Popularité</span>
+              <!-- <img src="/assets/icons/down-arrow.svg" class="selectImage" /> -->
+              <i
+                class="fas fa-chevron-up fa-flip-vertical selectImage"
+                style="color: #ffffff"
+              ></i>
+            </button>
+            <div class="optionsList" style="display: none">
+              <button
+                type="button"
+                class="o1"
+                style="display: none"
+                onclick="optionClick(this)"
+              >
+                Popularité
+              </button>
+              <button type="button" class="o1" onclick="optionClick(this)">
+                Date
+              </button>
+              <button type="button" class="o1" onclick="optionClick(this)">
+                Titre
+              </button>
             </div>
           </div>
-        </div>
-      </div>
+        </form>
+      </section>
+      <div class="photographerMedia"></div>
+      <!-- <div class="footer">297 081<i class="fa-solid fa-heart footerText"></i> </div> -->
     </main>
     <div id="contact_modal">
       <div class="modal">
