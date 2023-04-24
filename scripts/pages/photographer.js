@@ -20,8 +20,6 @@ window.onload = function () {
       // Media data
       const photographerMedia = [];
       data.media.forEach((item) => {
-        console.log("Check 1 2 3");
-
         if (item.photographerId == photographeId) {
           return photographerMedia.push(item);
         }
@@ -49,4 +47,28 @@ function displayPhotographer(photographer) {
     "photographerImg"
   ).src = `assets/photographers/${photographer.portrait}`;
   document.getElementById("photographerImg").alt = `${photographer.name}`;
+}
+
+function toggleOptionsList(btn) {
+  const optionsList = btn.nextElementSibling;
+  if (optionsList.style.display === "") {
+    optionsList.style.display = "none";
+    btn.classList.remove("s1-closed");
+    btn.classList.add("s1-open");
+    btn.querySelector(".selectImage").classList.remove("fa-chevron-up");
+    btn.querySelector(".selectImage").classList.add("fa-chevron-down");
+  } else {
+    optionsList.style.display = "";
+    btn.classList.remove("s1-open");
+    btn.querySelector(".selectImage").classList.remove("fa-chevron-down");
+    btn.querySelector(".selectImage").classList.add("fa-chevron-up");
+  }
+}
+
+function optionClick(optionBtn) {
+  const selectBtn = optionBtn.closest(".selectContainer").querySelector(".s1");
+  const presentOption = selectBtn.querySelector("span");
+  const newOption = optionBtn.textContent;
+  presentOption.textContent = newOption;
+  selectBtn.click();
 }
