@@ -16,6 +16,11 @@ window.onload = function () {
 
       displayPhotographer(photographer);
       console.log(photographer); // photographer info
+      console.log(photographer.price);
+
+      // Footer section | Price
+      const priceFooter = document.querySelector(".priceFooter");
+      priceFooter.textContent = photographer.price + "€ / jour";
 
       // Media data
       const photographerMedia = [];
@@ -40,7 +45,6 @@ function displayPhotographer(photographer) {
   document.getElementById(
     "photographerLocation"
   ).textContent = `${photographer.city}, ${photographer.country}`;
-
   document.getElementById("photographerTagline").textContent =
     photographer.tagline;
   document.getElementById(
