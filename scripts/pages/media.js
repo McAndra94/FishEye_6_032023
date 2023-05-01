@@ -1,41 +1,50 @@
 async function displayMedia(mediaData) {
   const mediaSection = document.querySelector(".photographerMedia");
+  const mediaArray = [];
 
   mediaData.forEach((media) => {
     const mediaModel = mediaFactory(media);
     const userMediaCardDOM = mediaModel.getMediaCardDOM();
-    /* LightBox section */
-    console.log(media.image);
 
+    /* LightBox section */
     userMediaCardDOM.addEventListener("click", () => {
       const lightBox = document.createElement("div");
       lightBox.classList.add("lightbox");
-      console.log(media.photographerId);
-      console.log(media.image);
-      console.log(media.video);
-      console.log("media page");
 
-      // Media title in lightbox (put under image/video)
+      const lightBoxMedia = document.createElement("img");
+      lightBoxMedia.src = `assets/images/${media.photographerId}/${media.image}`;
+
+      const lightBoxRightArrow = document.createElement("i");
+      lightBoxRightArrow.classList.add("fa-solid", "fa-chevron-right");
+
+      let mediaIndex = 0;
+      lightBoxRightArrow.addEventListener("click", () => {
+        mediaIndex++;
+        if (mediaIndex >= mediaArray.length) {
+          mediaIndex = 0;
+        }
+        lightBoxMedia.src = `assets/images/${mediaArray[mediaIndex].photographerId}/${mediaArray[mediaIndex].image}`;
+      });
+
+      const lightBoxLeftArrow = document.createElement("i");
+      lightBoxLeftArrow.classList.add("fa-solid", "fa-chevron-left");
+
+      lightBoxLeftArrow.addEventListener("click", () => {
+        mediaIndex--;
+        if (mediaIndex >= mediaArray.length) {
+          mediaIndex = 0;
+        }
+        lightBoxMedia.src = `assets/images/${mediaArray[mediaIndex].photographerId}/${mediaArray[mediaIndex].image}`;
+      });
+
       const lightBoxTitle = document.createElement("p");
       lightBoxTitle.textContent = media.title;
-
-      const lightBoxMedia =
-        media.type === "image"
-          ? document.createElement("img")
-          : document.createElement("video");
-      if (media.type === "image") {
-        lightBoxMedia.src = `/assets/images/${media.photographerId}/${media.image}`;
-        console.log(media.photographerId);
-        console.log(media.image);
-      } else if (media.type === "video") {
-        lightBoxMedia.src = `/assets/images/${media.photographerId}/${media.video}`;
-        lightBoxMedia.controls = true; // Video buttons & controls
-      }
+      lightBoxTitle.classList.add("lightBoxTitle");
 
       lightBoxMedia.alt = media.title;
-      lightBoxMedia.className = "lightboxMedia";
+      lightBoxMedia.classList.add("lightboxMedia");
       console.log(lightBoxMedia);
-      console.log(lightBoxMedia.src); // Error: <empty string>
+      console.log(lightBoxMedia.src);
 
       const lightBoxClose = document.createElement("span");
       lightBoxClose.classList.add("lightbox-close");
@@ -47,9 +56,13 @@ async function displayMedia(mediaData) {
       lightBox.appendChild(lightBoxTitle);
       lightBox.appendChild(lightBoxMedia);
       lightBox.appendChild(lightBoxClose);
+      lightBox.appendChild(lightBoxRightArrow);
+      lightBox.appendChild(lightBoxLeftArrow);
+
       document.body.appendChild(lightBox);
     });
 
+    mediaArray.push(media);
     mediaSection.appendChild(userMediaCardDOM);
   });
 }
@@ -60,6 +73,3 @@ function displayMediaCards(mediaData) {
     displayMedia(media);
   }
 }
-
-const footerText = document.getElementsByClassName("footerText");
-footerText.textContent = `${price} €/jour`;
