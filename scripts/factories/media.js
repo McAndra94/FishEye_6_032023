@@ -1,6 +1,6 @@
 function mediaFactory(artMediaData) {
   // Retrieve data
-  const { photographerId, title, image, video, likes, price } = artMediaData;
+  const { photographerId, title, image, video, likes } = artMediaData;
 
   // Media cards
   function getMediaCardDOM() {
@@ -17,22 +17,22 @@ function mediaFactory(artMediaData) {
     anchor.href = `javascript:openLightbox('${mediaUrl}')`; 
     */
     //anchor.href = "#";
-    anchor.addEventListener("click", (event) => {
+    /* anchor.addEventListener("click", (event) => {
       event.preventDefault(); // Prevents return to top page (default function)
       openLightbox();
-    });
+    }); */
     anchor.alt = title;
     console.log(title);
 
     let mediaElement;
     if (image) {
       mediaElement = document.createElement("img");
-      mediaElement.src = `assets/images/${photographerId}/${image}`;
+      mediaElement.src = `/assets/images/${photographerId}/${image}`;
       mediaElement.alt = title;
       mediaElement.className = "mediaElement";
     } else if (video) {
       mediaElement = document.createElement("video");
-      mediaElement.src = `assets/images/${photographerId}/${video}`;
+      mediaElement.src = `/assets/images/${photographerId}/${video}`;
       mediaElement.alt = title;
       mediaElement.controls = true; // Video buttons & controls
       mediaElement.className = "mediaElement";
@@ -52,30 +52,25 @@ function mediaFactory(artMediaData) {
     mediaLikes.className = "mediaLikes";
 
     const likeHeart = document.createElement("img");
-    likeHeart.src = "assets/images/likeHeart.png";
+    likeHeart.src = "/assets/images/likeHeart.png";
     likeHeart.alt = "likes";
     likeHeart.className = "likeHeart";
-    // Like +1 fonction when clicked
+    let liked = false; // Liked is initially set to false
+
     likeHeart.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevents propagation of the parent element
-      artMediaData.likes++;
-      mediaLikes.textContent = artMediaData.likes;
+      if (!liked) {
+        // Like +1 fonction when clicked
+        artMediaData.likes++;
+        mediaLikes.textContent = artMediaData.likes;
+        liked = true;
+      } else {
+        // Like -1 fonction when clicked again
+        artMediaData.likes--;
+        mediaLikes.textContent = artMediaData.likes;
+        liked = false;
+      }
     });
-
-    // Footer section | Price
-    const footer = document.createElement("div");
-    footer.className = "footer";
-    footer.textContent = "297 081";
-
-    const heartIcon = document.createElement("i");
-    heartIcon.className = "fa-solid fa-heart";
-
-    const priceElement = document.createElement("p");
-    priceElement.textContent = price + "€ / jour"; // price not correct, recheck
-
-    footer.appendChild(heartIcon);
-    footer.appendChild(priceElement);
-    document.body.appendChild(footer);
 
     // Attach elements to anchor with appendChild function
     anchor.appendChild(mediaElement);
