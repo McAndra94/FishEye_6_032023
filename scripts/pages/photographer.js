@@ -18,7 +18,11 @@ window.onload = function () {
       console.log(photographer); // photographer info
       console.log(photographer.price);
 
-      // Footer section | Price
+      // Footer section | Total likes & Price
+
+      const likesFooter = document.querySelector(".likesFooter");
+      likesFooter.textContent = photographer.totalLikes;
+
       const priceFooter = document.querySelector(".priceFooter");
       priceFooter.textContent = photographer.price + "€ / jour";
 
@@ -76,3 +80,7 @@ function optionClick(optionBtn) {
   presentOption.textContent = newOption;
   selectBtn.click();
 }
+
+console.log();
+console.log();
+console.log("test end photographer");
