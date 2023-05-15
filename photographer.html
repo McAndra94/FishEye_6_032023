@@ -24,26 +24,31 @@
         />
       </a>
     </header>
-    <main id="main">
+    <main id="main" role="main" aria-hidden="false">
       <!-- Main section header -->
-      <div class="photograph-header">
-        <div class="photographerInfo">
-          <h1 id="photographerName"></h1>
-          <p id="photographerLocation"></p>
-          <p id="photographerTagline"></p>
+      <div class="photograph-header" aria-labelledby="Photograher's details">
+        <div>
+          <h1 id="photographerName" aria-label="Photograher's name"></h1>
+          <p id="photographerLocation" aria-label="Photograher's location"></p>
+          <p id="photographerTagline" aria-label="Photograher's tagline"></p>
         </div>
-        <button class="contact_button" onclick="displayModal()">
+        <button
+          class="contact_button"
+          onclick="displayModal()"
+          aria-label="Contact button"
+        >
           Contactez-moi
         </button>
-        <img id="photographerImg" />
+        <img id="photographerImg" aria-label="Photograher's picture" />
       </div>
-      <section class="sortSection">
+      <section class="sortSection" aria-label="Media filter">
         <label for="form1">Trier par </label>
         <form name="form1" novalidate method="post">
           <div class="selectContainer">
             <button
               type="button"
               class="s1 s1-closed"
+              aria-haspopup="true"
               onclick="toggleOptionsList(this)"
             >
               <span>Popularité</span>
@@ -56,53 +61,111 @@
             <div class="optionsList" style="display: none">
               <button
                 type="button"
-                class="o1"
-                style="display: none"
-                onclick="optionClick(this)"
+                class="o1 sortLikes"
+                onclick="optionClick(this); sortByPopularity()"
               >
                 Popularité
               </button>
-              <button type="button" class="o1" onclick="optionClick(this)">
+              <button
+                type="button"
+                class="o1 sortDate"
+                onclick="optionClick(this); sortByDate()"
+              >
                 Date
               </button>
-              <button type="button" class="o1" onclick="optionClick(this)">
+              <button
+                type="button"
+                class="o1 sortTitle"
+                onclick="optionClick(this); sortByTitle()"
+              >
                 Titre
               </button>
             </div>
           </div>
         </form>
       </section>
-      <div class="photographerMedia"></div>
-      <div class="footer footerText">
-        <p>297 081<i class="fa-solid fa-heart"></i></p>
+      <div class="photographerMedia" aria-label="Media section"></div>
+      <div
+        class="footer footerText"
+        aria-label="Photographer's total likes and daily price"
+      >
+        <p class="likesFooter"></p>
+        <i class="fa-solid fa-heart"></i>
         <p class="priceFooter"></p>
       </div>
     </main>
-    <div id="contact_modal">
+    <div
+      id="contact_modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      tabindex="-1"
+    >
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+            alt="Close button"
+            id="closeContactForm"
+            tabindex="6"
+          />
         </header>
         <form>
-          <!-- <h3 id="photographerName"></h3> -->
+          <h3 class="contactName" aria-label="Photograher's name"></h3>
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="prenom">Prénom</label>
+            <input
+              id="prenom"
+              type="text"
+              aria-label="Entrez votre prénom"
+              tabindex="1"
+            />
             <br />
-            <label>Nom</label>
-            <input />
+            <label for="nom">Nom</label>
+            <input
+              id="nom"
+              type="text"
+              aria-label="Entrez votre nom"
+              tabindex="2"
+            />
             <br />
-            <label>Email</label>
-            <input />
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              aria-label="Entrez votre adresse email"
+              tabindex="3"
+            />
             <br />
-            <label>Votre message</label>
-            <input />
+            <label for="message">Votre message</label>
+            <input
+              class="msgBox"
+              id="message"
+              type="text"
+              aria-label="Entrez votre message"
+              tabindex="4"
+            />
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="submit" tabindex="5">
+            Envoyer
+          </button>
         </form>
       </div>
     </div>
+
+    <div class="lightBox" style="display: none" aria-label="Previous Media">
+      <i class="fas fa-times" aria-label="Close button"></i>
+      <div class="lightBoxMedia">
+        <img class="lightBoxImg" src="" alt="" />
+        <video class="lightBoxVideo" src="" controls alt=""></video>
+        <p class="lightBoxTitle"></p>
+        <i class="fas fa-chevron-right" aria-label="Next Media"></i>
+        <i class="fas fa-chevron-left" aria-label="Previous Media"></i>
+      </div>
+    </div>
+
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/pages/media.js"></script>
     <script src="/scripts/factories/media.js"></script>
