@@ -18,24 +18,25 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0 30px;
 }
-.photographerInfo {
-  margin-right: -10px;
-}
 
 #photographerName {
   color: #d3573c;
   font-size: 64px;
-  line-height: 83px;
+  line-height: 1;
 }
 
 #photographerLocation {
+  position: inherit;
   color: #901c1c;
   font-size: 17px;
+  line-height: 1;
 }
 
 #photographerTagline {
+  position: inherit;
   color: #000000;
   font-size: 14px;
+  line-height: 1;
 }
 
 #photographerImg {
@@ -45,7 +46,8 @@ body {
   border-radius: 50%;
   object-fit: cover;
   /* Added space between image & contact box */
-  margin-left: 15%;
+  margin-right: 10px;
+  margin-left: 100px;
 }
 
 /* Sort section */
@@ -77,6 +79,7 @@ body {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+
 .o1 {
   color: white;
   padding: 10px;
@@ -144,14 +147,11 @@ body {
 }
 
 .mediaElement {
-  height: 90%;
+  height: 100%;
   width: 100%;
-  min-height: 200px;
-  min-width: 250px;
-  /*   max-height: 250px;*/
-  max-width: 300px;
   background-color: #c4c4c4;
   border-radius: 5px;
+  object-fit: cover;
 }
 
 .mediaBox h2 {
@@ -187,6 +187,7 @@ body {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 25px;
 }
 
 /* Change color on hover & focus */
@@ -197,13 +198,18 @@ body {
 }
 
 #contact_modal {
-  position: absolute;
-  top: 100px;
+  position: fixed; /* Fixed so it doesn't move with background */
+  top: 10%;
+  left: 20%;
+  right: 20%;
+  height: 85%;
+  overflow: auto; /* Scrollable */
 }
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 500px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -221,10 +227,17 @@ body {
   cursor: pointer;
 }
 
+/* Contactez-moi */
 .modal header h2 {
-  font-size: 64px;
+  font-size: 45px;
   font-weight: normal;
-  text-align: center;
+}
+
+/* Photographer's name */
+.contactName {
+  font-size: 45px;
+  font-weight: normal;
+  margin: 0 0 45px 0;
 }
 
 form {
@@ -250,9 +263,14 @@ form div {
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 65px;
   border: none;
   border-radius: 5px;
+}
+
+.msgBox {
+  width: 100%;
+  height: 130px;
 }
 
 /* Image modal */
@@ -280,7 +298,12 @@ form input {
   padding: 0 30px 0 30px;
 }
 
-.lightbox {
+.fa-heart {
+  padding-top: 25px;
+  margin-left: -100px;
+}
+
+.lightBox {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -292,47 +315,52 @@ form input {
   bottom: 0;
 }
 
-.lightbox img {
-  width: 500px;
-  height: 600px;
-  border-radius: 3px;
-  /* margin: 10px;
- box-shadow: 10px #cccccc; */
+.lightBoxMedia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.lightbox-close {
-  position: absolute;
-  font-size: 50px;
-  top: 5%;
-  right: 25px;
-  color: #901c1c;
-  cursor: pointer;
+.lightBoxImg,
+.lightBoxVideo {
+  width: 600px;
+  height: 800px;
+  justify-content: center;
+  border-radius: 3px;
+  margin-top: 30px;
 }
 
 .lightBoxTitle {
   position: absolute;
-  bottom: 0px;
-  left: 25%;
-  font-size: 22px;
+  font-size: 25px;
   color: #901c1c;
+  bottom: 20px;
+  left: 30%;
+}
+
+.fa-times {
+  position: absolute;
+  font-size: 50px;
+  color: #901c1c;
+  top: 5%;
+  cursor: pointer;
+  right: 10%;
 }
 
 .fa-chevron-right {
   position: absolute;
-  font-size: 40px;
+  font-size: 50px;
   color: #901c1c;
   top: 45%;
   cursor: pointer;
-  right: 0;
-  padding-right: 60px;
+  right: 10%;
 }
 
 .fa-chevron-left {
   position: absolute;
-  font-size: 40px;
+  font-size: 50px;
   color: #901c1c;
   top: 45%;
   cursor: pointer;
-  left: 0;
-  padding-left: 60px;
+  left: 10%;
 }
