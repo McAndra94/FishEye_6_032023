@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
     <header>
       <a href="index.html">
         <img
-          src="assets/images/logo.png"
+          src="assets/medias/logo.png"
           class="logo"
           alt="Fisheye Home page"
         />
@@ -39,11 +39,11 @@
         >
           Contactez-moi
         </button>
-        <img id="photographerImg" aria-label="Photograher's picture" />
+        <img id="photographerImg" alt="Photograher's picture" />
       </div>
       <section class="sortSection" aria-label="Media filter">
         <label for="form1">Trier par </label>
-        <form name="form1" novalidate method="post">
+        <form name="form1" class="sortForm" novalidate method="post">
           <div class="selectContainer">
             <button
               type="button"
@@ -52,31 +52,30 @@
               onclick="toggleOptionsList(this)"
             >
               <span>Popularité</span>
-              <!-- <img src="/assets/icons/down-arrow.svg" class="selectImage" /> -->
-              <i
+              <strong
                 class="fas fa-chevron-up fa-flip-vertical selectImage"
                 style="color: #ffffff"
-              ></i>
+              ></strong>
             </button>
             <div class="optionsList" style="display: none">
               <button
                 type="button"
                 class="o1 sortLikes"
-                onclick="optionClick(this); sortByPopularity()"
+                onclick="optionClick(this);"
               >
                 Popularité
               </button>
               <button
                 type="button"
                 class="o1 sortDate"
-                onclick="optionClick(this); sortByDate()"
+                onclick="optionClick(this);"
               >
                 Date
               </button>
               <button
                 type="button"
                 class="o1 sortTitle"
-                onclick="optionClick(this); sortByTitle()"
+                onclick="optionClick(this);"
               >
                 Titre
               </button>
@@ -90,7 +89,7 @@
         aria-label="Photographer's total likes and daily price"
       >
         <p class="likesFooter"></p>
-        <i class="fa-solid fa-heart"></i>
+        <strong class="fa-solid fa-heart"></strong>
         <p class="priceFooter"></p>
       </div>
     </main>
@@ -109,7 +108,7 @@
             onclick="closeModal()"
             alt="Close button"
             id="closeContactForm"
-            tabindex="6"
+            tabindex="1"
           />
         </header>
         <form>
@@ -120,7 +119,7 @@
               id="prenom"
               type="text"
               aria-label="Entrez votre prénom"
-              tabindex="1"
+              tabindex="2"
             />
             <br />
             <label for="nom">Nom</label>
@@ -128,7 +127,7 @@
               id="nom"
               type="text"
               aria-label="Entrez votre nom"
-              tabindex="2"
+              tabindex="3"
             />
             <br />
             <label for="email">Email</label>
@@ -136,7 +135,7 @@
               id="email"
               type="email"
               aria-label="Entrez votre adresse email"
-              tabindex="3"
+              tabindex="4"
             />
             <br />
             <label for="message">Votre message</label>
@@ -145,10 +144,15 @@
               id="message"
               type="text"
               aria-label="Entrez votre message"
-              tabindex="4"
+              tabindex="5"
             />
           </div>
-          <button class="contact_button" type="submit" tabindex="5">
+          <button
+            class="contact_button"
+            type="button"
+            tabindex="6"
+            onclick="submitForm()"
+          >
             Envoyer
           </button>
         </form>
@@ -156,19 +160,22 @@
     </div>
 
     <div class="lightBox" style="display: none" aria-label="Previous Media">
-      <i class="fas fa-times" aria-label="Close button"></i>
+      <strong class="fas fa-times" aria-label="Close button"></strong>
       <div class="lightBoxMedia">
         <img class="lightBoxImg" src="" alt="" />
         <video class="lightBoxVideo" src="" controls alt=""></video>
         <p class="lightBoxTitle"></p>
-        <i class="fas fa-chevron-right" aria-label="Next Media"></i>
-        <i class="fas fa-chevron-left" aria-label="Previous Media"></i>
+        <strong class="fas fa-chevron-right" aria-label="Next Media"></strong>
+        <strong
+          class="fas fa-chevron-left"
+          aria-label="Previous Media"
+        ></strong>
       </div>
     </div>
 
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/pages/media.js"></script>
-    <script src="/scripts/factories/media.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/pages/media.js"></script>
+    <script src="scripts/factories/media.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>

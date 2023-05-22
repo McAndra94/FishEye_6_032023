@@ -1,10 +1,10 @@
 let totalLikes = 0;
+let likesFooter = document.querySelector(".likesFooter");
 
 function mediaFactory(artMediaData) {
   // Retrieve data
   const { photographerId, title, image, video, likes } = artMediaData;
 
-  console.log(artMediaData.likes, "factories");
   // Media cards
   function getMediaCardDOM() {
     // Create DOM elements & define value
@@ -13,17 +13,16 @@ function mediaFactory(artMediaData) {
 
     const anchor = document.createElement("a");
     anchor.alt = title;
-    console.log(title);
 
     let mediaElement;
     if (image) {
       mediaElement = document.createElement("img");
-      mediaElement.src = `/assets/images/${photographerId}/${image}`;
+      mediaElement.src = `assets/medias/${photographerId}/${image}`;
       mediaElement.alt = title;
       mediaElement.className = "mediaElement";
     } else if (video) {
       mediaElement = document.createElement("video");
-      mediaElement.src = `/assets/images/${photographerId}/${video}`;
+      mediaElement.src = `assets/medias/${photographerId}/${video}`;
       mediaElement.alt = title;
       mediaElement.controls = true; // Video buttons & controls
       mediaElement.className = "mediaElement";
@@ -43,7 +42,7 @@ function mediaFactory(artMediaData) {
     mediaLikes.className = "mediaLikes";
 
     const likeHeart = document.createElement("img");
-    likeHeart.src = "/assets/images/likeHeart.png";
+    likeHeart.src = "/assets/medias/likeHeart.png";
     likeHeart.alt = "likes";
     likeHeart.className = "likeHeart";
     let liked = false; // Liked is initially set to false
@@ -51,19 +50,18 @@ function mediaFactory(artMediaData) {
     likeHeart.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevents propagation of the parent element
       if (!liked) {
-        // Like +1 fonction when clicked
+        // Like +1 if clicked
         artMediaData.likes++;
-        totalLikes++; // +1 on totalLikes
-        mediaLikes.textContent = artMediaData.likes;
+        totalLikes++;
         liked = true;
       } else {
-        // Like -1 fonction when clicked again
+        // Like -1 if clicked again
         artMediaData.likes--;
-        totalLikes--; // -1 on totalLikes
-        mediaLikes.textContent = artMediaData.likes;
+        totalLikes--;
         liked = false;
       }
-      likesFooter.textContent = totalLikes; // updates likes in footer
+      mediaLikes.textContent = artMediaData.likes;
+      likesFooter.textContent = totalLikes;
     });
 
     // Attach elements to anchor with appendChild function
@@ -84,12 +82,10 @@ function mediaFactory(artMediaData) {
     return article;
   }
 
+  // Addition assignment : Add the 2 values and assign the result to totalLikes
   totalLikes += likes;
-
   console.log(totalLikes);
-
-  // Fixed footer section
-  const likesFooter = document.querySelector(".likesFooter");
+  // Fixed footer section next to Heart icon
   likesFooter.textContent = totalLikes;
 
   return { getMediaCardDOM };
@@ -100,20 +96,20 @@ const sortLikesElement = document.querySelector(".sortLikes");
 sortLikesElement.addEventListener("click", function () {
   sortByPopularity(mediaArray);
 });
-
 function sortByPopularity(popularity) {
+  totalLikes = 0; // reset to 0 to avoid doubles
   const sortedMediaPopu = popularity.sort((a, b) => b.likes - a.likes);
   mediaSection.innerHTML = "";
   displayMedia(sortedMediaPopu);
 }
 
-// Sort By Date (New to Old)
+// Sort By Date | new to old
 const sortDateElement = document.querySelector(".sortDate");
 sortDateElement.addEventListener("click", function () {
   sortByDate(mediaArray);
 });
-
 function sortByDate(date) {
+  totalLikes = 0;
   const sortedMediaDate = date.sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   );
@@ -126,8 +122,8 @@ const sortTitleElement = document.querySelector(".sortTitle");
 sortTitleElement.addEventListener("click", function () {
   sortByTitle(mediaArray);
 });
-
 function sortByTitle(title) {
+  totalLikes = 0;
   const sortedMediaTitle = title.sort((a, b) => a.title.localeCompare(b.title));
   mediaSection.innerHTML = "";
   displayMedia(sortedMediaTitle);

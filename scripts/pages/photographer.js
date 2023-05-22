@@ -1,6 +1,6 @@
 // Retrieve id from url
 const photographeId = new URLSearchParams(window.location.search).get("id");
-//
+
 window.onload = function () {
   fetch("data/photographers.json")
     .then((response) => response.json())
@@ -12,14 +12,10 @@ window.onload = function () {
       if (!photographer) {
         window.location.href = "index.html";
       }
-      console.log(photographeId);
 
       displayPhotographer(photographer);
-      console.log(photographer); // photographer info
-      console.log(photographer.price);
 
       // Footer section | Total likes & Price
-
       const likesFooter = document.querySelector(".likesFooter");
       likesFooter.textContent = photographer.totalLikes;
 
@@ -33,16 +29,15 @@ window.onload = function () {
           return photographerMedia.push(item);
         }
       });
-
+      mediaArray = [...photographerMedia];
       displayMedia(photographerMedia);
       console.log(photographerMedia.length);
     });
 };
 
-async function displayData(photographers) {
-  const photographerHeader = document.querySelector(".photograph-header");
-  console.log(photographerHeader);
-}
+/* async function displayData1(photographers) {
+ */ const photographerHeader = document.querySelector(".photograph-header");
+console.log(photographerHeader);
 
 function displayPhotographer(photographer) {
   document.getElementById("photographerName").textContent = photographer.name;
@@ -80,7 +75,3 @@ function optionClick(optionBtn) {
   presentOption.textContent = newOption;
   selectBtn.click();
 }
-
-console.log();
-console.log();
-console.log("test end photographer");

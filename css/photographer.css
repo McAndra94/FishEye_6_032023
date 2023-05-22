@@ -55,6 +55,7 @@ body {
 .sortSection {
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
 }
 
 .sortSection label {
@@ -69,16 +70,22 @@ body {
   padding: 12px;
   display: flex;
   justify-content: space-between;
+  border: none;
 }
 
+.s1,
+.s1-open,
 .s1-closed {
   border-radius: 5px;
 }
 
+/* 
 .s1-open {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
+   border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+} */
 
 .o1 {
   color: white;
@@ -96,6 +103,7 @@ body {
   flex-direction: column;
   align-items: stretch;
   width: 130px;
+  border-radius: 5px;
 }
 
 .optionsList {
@@ -323,11 +331,12 @@ form input {
 
 .lightBoxImg,
 .lightBoxVideo {
-  width: 600px;
+  max-width: 600px;
   height: 800px;
   justify-content: center;
   border-radius: 3px;
   margin-top: 30px;
+  object-fit: cover;
 }
 
 .lightBoxTitle {
