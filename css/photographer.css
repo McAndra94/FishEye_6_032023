@@ -28,7 +28,7 @@ body {
 #photographerLocation {
   position: inherit;
   color: #901c1c;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1;
 }
 
@@ -51,7 +51,6 @@ body {
 }
 
 /* Sort section */
-
 .sortSection {
   display: flex;
   flex-direction: row;
@@ -62,6 +61,7 @@ body {
   width: 100px;
   padding: 10px;
 }
+
 .s1 {
   color: white;
   background-color: #901c1c;
@@ -73,19 +73,14 @@ body {
   border: none;
 }
 
-.s1,
-.s1-open,
 .s1-closed {
   border-radius: 5px;
 }
 
-/* 
 .s1-open {
-   border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-} */
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
 
 .o1 {
   color: white;
@@ -120,7 +115,6 @@ body {
 .photographerMedia {
   display: flex;
   flex-wrap: wrap;
-  /* flex-direction: row; */
   justify-content: space-around;
 }
 
@@ -130,8 +124,6 @@ body {
   width: 280px;
   min-width: 280px;
   justify-content: space-between;
-  /*    align-items: left;
-  overflow: hidden;*/
   margin: 50px 20px;
   color: #901c1c;
 }
@@ -241,7 +233,6 @@ body {
   font-weight: normal;
 }
 
-/* Photographer's name */
 .contactName {
   font-size: 45px;
   font-weight: normal;
@@ -264,8 +255,6 @@ form div {
   display: flex;
   flex-direction: column;
   width: 100%;
-  /*   align-items: self-start;
- */
   margin-bottom: 26px;
 }
 

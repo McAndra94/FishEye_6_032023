@@ -47,15 +47,11 @@ async function displayMedia(mediaData) {
       const lightBoxImage = lightBox.querySelector(".lightBoxImg");
       const lightBoxVideo = lightBox.querySelector(".lightBoxVideo");
       const lightBoxTitle = lightBox.querySelector(".lightBoxTitle");
-
       const lightboxClose = lightBox.querySelector(".fa-times");
       lightboxClose.addEventListener("click", () => {
         lightBox.style.display = "none";
       });
       lightboxClose.focus();
-
-      console.log(`assets/medias/${media.photographerId}/${media.image}`);
-      console.log(`assets/medias/${media.photographerId}/${media.video}`);
 
       if (media.image) {
         lightBoxImage.style.display = "block";
@@ -89,7 +85,6 @@ async function displayMedia(mediaData) {
           lightBoxVideo.src = `assets/medias/${nextMedia.photographerId}/${nextMedia.video}`;
           lightBoxVideo.alt = nextMedia.title;
         }
-
         lightBoxTitle.textContent = nextMedia.title;
         lightBox.focus();
       });

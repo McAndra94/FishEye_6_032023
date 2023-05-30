@@ -12,18 +12,18 @@ function mediaFactory(artMediaData) {
     article.className = "mediaBox";
 
     const anchor = document.createElement("a");
-    anchor.alt = title;
+    anchor.alt = `Media's title: ${title}`;
 
     let mediaElement;
     if (image) {
       mediaElement = document.createElement("img");
       mediaElement.src = `assets/medias/${photographerId}/${image}`;
-      mediaElement.alt = title;
+      mediaElement.alt = `Media's title: ${title}`;
       mediaElement.className = "mediaElement";
     } else if (video) {
       mediaElement = document.createElement("video");
       mediaElement.src = `assets/medias/${photographerId}/${video}`;
-      mediaElement.alt = title;
+      mediaElement.alt = `Media's title: ${title}`;
       mediaElement.controls = true; // Video buttons & controls
       mediaElement.className = "mediaElement";
     } else {
@@ -84,7 +84,6 @@ function mediaFactory(artMediaData) {
 
   // Addition assignment : Add the 2 values and assign the result to totalLikes
   totalLikes += likes;
-  console.log(totalLikes);
   // Fixed footer section next to Heart icon
   likesFooter.textContent = totalLikes;
 

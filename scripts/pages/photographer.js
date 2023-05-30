@@ -31,13 +31,10 @@ window.onload = function () {
       });
       mediaArray = [...photographerMedia];
       displayMedia(photographerMedia);
-      console.log(photographerMedia.length);
     });
 };
 
-/* async function displayData1(photographers) {
- */ const photographerHeader = document.querySelector(".photograph-header");
-console.log(photographerHeader);
+const photographerHeader = document.querySelector(".photograph-header");
 
 function displayPhotographer(photographer) {
   document.getElementById("photographerName").textContent = photographer.name;
@@ -56,13 +53,14 @@ function toggleOptionsList(btn) {
   const optionsList = btn.nextElementSibling;
   if (optionsList.style.display === "") {
     optionsList.style.display = "none";
-    btn.classList.remove("s1-closed");
-    btn.classList.add("s1-open");
+    btn.classList.add("s1-closed");
+    btn.classList.remove("s1-open");
     btn.querySelector(".selectImage").classList.remove("fa-chevron-up");
     btn.querySelector(".selectImage").classList.add("fa-chevron-down");
   } else {
     optionsList.style.display = "";
-    btn.classList.remove("s1-open");
+    btn.classList.remove("s1-closed");
+    btn.classList.add("s1-open");
     btn.querySelector(".selectImage").classList.remove("fa-chevron-down");
     btn.querySelector(".selectImage").classList.add("fa-chevron-up");
   }

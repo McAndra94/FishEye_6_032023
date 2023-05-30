@@ -10,7 +10,7 @@ function photographerFactory(data) {
     anchor.setAttribute("href", "./photographer.html?id=" + `${id}`);
     const imageElement = document.createElement("img");
     imageElement.setAttribute("src", "assets/photographers/" + `${portrait}`);
-    imageElement.setAttribute("alt", `${name}`);
+    imageElement.setAttribute("alt", `${name}'s picture`);
     const nameElement = document.createElement("h2");
     nameElement.textContent = name;
     const locationElement = document.createElement("h3");
@@ -19,8 +19,6 @@ function photographerFactory(data) {
     taglineElement.textContent = tagline;
     const priceElement = document.createElement("p");
     priceElement.textContent = `${price} €/jour`;
-
-    //document.getElementsByClassName("mediaTitle").textContent = media.title;
 
     // Attach elements to anchor with appendChild function
     anchor.appendChild(imageElement);

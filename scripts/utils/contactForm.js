@@ -52,3 +52,14 @@ function trapTabKey(event) {
     }
   }
 }
+
+function submitForm() {
+  const prenom = document.getElementById("prenom").value;
+  const nom = document.getElementById("nom").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  console.log("Prénom Nom :", prenom, nom);
+  console.log("Email :", email);
+  console.log("Message :", message);
+}
