@@ -4,10 +4,20 @@ let mediaArray = [];
 
 async function displayMedia(mediaData) {
   mediaSection.innerHTML = "";
+  mediaArray = mediaData;
+
   mediaData.forEach((media, index) => {
     const mediaModel = mediaFactory(media);
     const userMediaCardDOM = mediaModel.getMediaCardDOM();
 
+    userMediaCardDOM.setAttribute("tabindex", "0"); // Keyboard tab focus
+
+    userMediaCardDOM.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        mediaIndex = index;
+        userMediaCardDOM.click(); // Enter key = click
+      }
+    });
     /* LightBox section */
     userMediaCardDOM.addEventListener("click", () => {
       mediaIndex = index;
@@ -113,9 +123,4 @@ async function displayMedia(mediaData) {
     });
     mediaSection.appendChild(userMediaCardDOM);
   });
-}
-
-// Add the mediaData array to mediaArray before sorting
-function displayMediaCards(mediaData) {
-  for (let i = 0; i < mediaData.length; i++) {}
 }
